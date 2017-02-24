@@ -36,12 +36,21 @@
                                                                     //[/Comments]
 */
 class BasicDelayAudioProcessorEditor  : public AudioProcessorEditor,
-                                        public Timer
+                                        public Timer,
+                                        public SliderListener
 {
 public:
     //==============================================================================
     BasicDelayAudioProcessorEditor (BasicDelayAudioProcessor& p);
     ~BasicDelayAudioProcessorEditor();
+    
+    BasicDelayAudioProcessor& delayTime;
+    BasicDelayAudioProcessor& feedback;
+    
+    AudioSampleBuffer delayBuffer;
+    int delayBufferLength;
+    int readIndex;
+    int writeIndex;
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
@@ -50,6 +59,7 @@ public:
 
     void paint (Graphics& g) override;
     void resized() override;
+    void sliderValueChanged (Slider* sliderThatWasMoved) override;
 
 
 
@@ -59,6 +69,10 @@ private:
     //[/UserVariables]
 
     //==============================================================================
+    ScopedPointer<Slider> sliderFeedback;
+    ScopedPointer<Slider> sliderDelayTime;
+    ScopedPointer<Label> labelDelayTime;
+    ScopedPointer<Label> labelFeedback;
 
 
     //==============================================================================
