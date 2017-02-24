@@ -43,15 +43,9 @@ public:
     //==============================================================================
     BasicDelayAudioProcessorEditor (BasicDelayAudioProcessor& p);
     ~BasicDelayAudioProcessorEditor();
+   
     
-    BasicDelayAudioProcessor& delayTime;
-    BasicDelayAudioProcessor& feedback;
     
-    AudioSampleBuffer delayBuffer;
-    int delayBufferLength;
-    int readIndex;
-    int writeIndex;
-
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
     void timerCallback();

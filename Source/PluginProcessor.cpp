@@ -25,7 +25,24 @@ BasicDelayAudioProcessor::BasicDelayAudioProcessor()
                        )
 #endif
 {
+   // Some Feedback
+    feedback = 0.5;
+    
+    //Delay of 0.2 seconds
+    delayTime = 0.25;
+    
+    //Start reading from the start of circular buffer
+    readIndex = 0;
+    
+    // Set the write index ahead of read index
+    writeIndex = delayTime;
+    
+    // Initial delay buffer size
+    delayBufferLength = 0;
+
 }
+
+
 
 BasicDelayAudioProcessor::~BasicDelayAudioProcessor()
 {

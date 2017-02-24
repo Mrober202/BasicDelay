@@ -23,6 +23,8 @@ public:
     //==============================================================================
     BasicDelayAudioProcessor();
     ~BasicDelayAudioProcessor();
+    int delayTime;
+    int feedback;
 
     //==============================================================================
     void prepareToPlay (double sampleRate, int samplesPerBlock) override;
@@ -59,6 +61,12 @@ public:
 private:
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (BasicDelayAudioProcessor)
+    
+    AudioSampleBuffer delayBuffer;
+    int delayBufferLength;
+    int readIndex;
+    int writeIndex;
+    
 };
 
 
